@@ -13,4 +13,11 @@ src/MarDyn_*.*
 *.so.1.0
 *.a
 *.so
+*.xml
+*.res
+*.dat
+*.rdf
+*.log
+*.pov
+*.mmpld
 src/particleContainer/adapter/vectorization/

@@ -223,6 +223,7 @@ void DomainDecompMPIBase::assertDisjunctivity(ParticleContainer* moleculeContain
 		unsigned long num_molecules = moleculeContainer->getNumberOfParticles();
 		std::vector<unsigned long> tids(num_molecules);
 		int i = 0;
+		// Iterating over ONLY_INNER_AND_BOUNDARY -> No halo cells!
 		for (auto m = moleculeContainer->iterator(ParticleIterator::ONLY_INNER_AND_BOUNDARY); m.isValid(); ++m) {
 			/*molecule id is being assigned to tids */ 
 			tids[i] = m->getID();
@@ -253,7 +254,7 @@ void DomainDecompMPIBase::assertDisjunctivity(ParticleContainer* moleculeContain
 		std::cout << "Calling from within the DomainDecompMPIBase.cpp: assertdisjunctivity -> else" << endl;
 		std::cout << "Process Rank = " << rank << ", OpenMP thread = " << omp_get_thread_num()<< endl;
 		std::cout << "_rank = " << rank << ", OpenMP thread = " << omp_get_thread_num()<< endl;		
-		 Delete later */
+		Delete later */
 
 		for (auto m = moleculeContainer->iterator(ParticleIterator::ONLY_INNER_AND_BOUNDARY); m.isValid(); ++m) {
 			/* Setting 'check' as 0 -> @ particle ID locations 
@@ -277,7 +278,7 @@ void DomainDecompMPIBase::assertDisjunctivity(ParticleContainer* moleculeContain
 			MPI_CHECK(MPI_Recv(recv.data(), num_recv, MPI_UNSIGNED_LONG, i, 2674 + i, _comm, &status));
 			*/
 		 
-			// Thread-safe implementation
+			// Thread-safe implementation (New)!!!!!!!!!!!!!!!
 			// MProbe
 			int num_recv = 0;
 			MPI_CHECK(MPI_Mprobe(i, 2674 + i, _comm, &message, &status));
@@ -303,7 +304,7 @@ void DomainDecompMPIBase::assertDisjunctivity(ParticleContainer* moleculeContain
 					std::cout << "Process Rank = " << rank << ", OpenMP thread = " << omp_get_thread_num()<< endl;
 					//std::cout << "count: " << l <<endl;		
 					l++;					
-					 Delete later */
+					Delete later */
 					}	
 
 			}

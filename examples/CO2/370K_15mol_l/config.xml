@@ -46,18 +46,18 @@
         <include query="/spheres">../sphereparams_co2.xml</include>
         <writecontrol>
           <start>0</start>
-          <writefrequency>100</writefrequency>
+          <writefrequency>1</writefrequency>
           <stop>1000000000</stop>
           <framesperfile>0</framesperfile>
         </writecontrol>
         <outputprefix>megamol</outputprefix>
       </outputplugin>
       <outputplugin name="ResultWriter">
-        <writefrequency>5</writefrequency>
+        <writefrequency>1</writefrequency>
         <outputprefix>CO2</outputprefix>
       </outputplugin>
       <outputplugin name="SysMonOutput">
-        <writefrequency>10000</writefrequency>
+        <writefrequency>1</writefrequency>
         <expression label="LoadAvg1">procloadavg:loadavg1</expression>
         <expression label="Free+BufferRAM [MB]">sysinfo:freeram sysinfo:bufferram + sysinfo:mem_unit * float 1048576 /</expression>
       </outputplugin>

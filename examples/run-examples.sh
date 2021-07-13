@@ -4,7 +4,8 @@
 # Copyright (c) 2017      Christoph Niethammer <niethammer@hlrs.de>
 #
 
-MARDYN_EXE="mpirun -np 1 $PWD/../src/MarDyn"
+# MARDYN_EXE="mpirun -np 1 $PWD/../src/MarDyn"
+MARDYN_EXE="mpirun -np 2 $PWD/../build/src/MarDyn"
 MARDYN_OPTIONS="--steps 10 -v"
 EXAMPLE_LIST_FILE=${EXAMPLE_LIST_FILE:=example-list.txt}
 LOGFILE=${LOGFILE:=$PWD/run-examples.log}

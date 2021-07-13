@@ -591,6 +591,8 @@ void Domain::writeCheckpointHeaderXML(string filename, ParticleContainer* partic
 void Domain::writeCheckpoint(string filename,
 		ParticleContainer* particleContainer, DomainDecompBase* domainDecomp, double currentTime,
 		bool useBinaryFormat) {
+	/* Debugging the error in checkpointwriter */
+	
 	domainDecomp->assertDisjunctivity(particleContainer);
 #ifdef ENABLE_REDUCED_MEMORY_MODE
 	global_log->warning() << "The checkpoints are not adapted for RMM-mode. Velocity will be one half-timestep ahead!" << std::endl;
